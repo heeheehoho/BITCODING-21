@@ -1,36 +1,26 @@
-var express = require('express');
-var multer = require('multer')
+const express = require("express");
+const fileupload = require("express-fileupload");
+const cors = require("cors");
 
-var _storage = multer.diskStorage({
-  destination: function(req, file, cb){
-    cb(null, './uploads/')
-  },
-  filename: function(req, file, cb){
-    
-    cb(null, file.originalname)
-  }
-})
-var upload = multer({storage: _storage})
+const app = express();
 
-var app = express();
+app.use(cors());
+app.use(fileupload());
+app.use(express.static("files"));
 
+app.post("/upload", (req, res) => {
+  const newpath = __dirname + "/files/";
+  const file = req.files.file;
+  const filename = file.name;
 
-// 업로드 파일 접근
-app.use('/user', express.static('uploads'));
-
-app.set('view engine', 'jade');
-app.set('views', './views');
-
-
-
-app.get('/upload', function(req, res){
-  res.render('upload');
+  file.mv(`${newpath}${filename}`, (err) => {
+    if (err) {
+      res.send({ message: "File upload failed", code: 200 });
+    }
+    res.send({ message: "File Uploaded", code: 200 });
+  });
 });
 
-app.post('/upload', upload.single('userfile'), function(req, res){
-  res.send('Uploaded!! ' + req.file.originalname);
-})
-
-app.listen(3001, function(){
-  console.log('connected 3001 port!');
+app.listen(3001, () => {
+  console.log("Server running successfully on 3001");
 });
