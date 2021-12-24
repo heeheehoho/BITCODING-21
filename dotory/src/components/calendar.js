@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../main.css';
+import './calendar.css';
 
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -11,9 +11,9 @@ import interactionPlugin from '@fullcalendar/interaction';
 function Calendar() {
   
   return (
-    <div className="App">
+    <div className="main-calendar">
         <div>
-            <FullCalendar className="main-calendar"
+            <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             initialView="dayGridMonth"
             />

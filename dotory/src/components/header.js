@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 import logo1 from '../images/dotory.png'
 import logo2 from '../images/daramji.jpeg';
-import '../main.css';
+import './header.css';
 
 function Header() {
   
@@ -16,9 +16,9 @@ function Header() {
       <nav>
         <ul className="nav-container">
         
-          <li className = "nav-item"><Link to="/">Checklist</Link></li>
-          <li className = "nav-item"><Link to="/">Diary</Link></li>
-          <li className = "nav-item"><Link to="/pocket-page">Pocket</Link></li>        
+          <li className = "nav-item"><Link to="/todolist">ToDoList</Link></li>
+          <li className = "nav-item"><Link to="/diary">Diary</Link></li>
+          <li className = "nav-item"><Link to="/pocket">Pocket</Link></li>        
   
         </ul>
       </nav>
