@@ -5,7 +5,8 @@ import './pocket.css';
 function PocketPage() {
     return (
         <div>
-            <h1>pocket page</h1>
+            <h1>pocket</h1>
+            
         </div>
     );
 }
